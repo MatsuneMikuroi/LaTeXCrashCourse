@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Easy to learn, easy to use}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Why use \LaTeX ?}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Overleaf}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Use}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Online - Overleaf}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Account Creation}{4}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}New Project}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Counterpart...}{4}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.3}Offline - TeXLive}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Offline Overleaf free}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Writting}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Preamble}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Document management}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Text mode}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Math mode}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Commands}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Environments}{7}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Figure and tables}{7}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Bibliography}{8}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Cross-referencing}{8}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Create figure and graphes}{8}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Create your own commands and environments}{8}{subsection.3.11}%

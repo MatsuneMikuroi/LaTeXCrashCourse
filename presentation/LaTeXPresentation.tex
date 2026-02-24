@@ -1,0 +1,363 @@
+\documentclass[show notes on second screen=right]{beamer}
+
+\usepackage{listing}  % used for code listing
+\usepackage{tikz}  % used to draw
+\usepackage{hyperref}  % used to format hyperlink reference 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\setbeamertemplate{footline}[frame number]  % to auto number the frame
+
+\titlegraphic{  % load the LaTeX logo locate in the src folder
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{./../src/LaTeXLogo.png}
+  \end{center}
+}
+
+% Title data
+\title{Introduction Course}
+\author{Romain De Groote}
+\date{\today}
+
+% Configuration of the title
+\setbeamerfont{title}{size=\Huge,series=\bfseries}
+
+\setbeamertemplate{title page}{
+  \begin{centering}
+    \vspace*{-1cm}
+    {\usebeamerfont{titlegraphic}\inserttitlegraphic\par}
+    \vspace*{-1cm}
+    {\usebeamerfont{title}\inserttitle\par}
+    \vspace{0.2cm}
+    {\usebeamerfont{author}\insertauthor\par}
+    {\usebeamerfont{date}\insertdate\par}
+  \end{centering}
+}
+
+\begin{document}
+
+\titlepage  % Generate the title slide
+
+\begin{frame}[t]{Why LaTeX?}  % New frame, text top aligned, slide title: Why LaTeX?
+  \onslide<+->  % show from this to the next on this slide
+  As someone evolving in science, why use LaTeX:
+  \onslide<+->
+  \begin{itemize}
+    \item Open-Source and free
+    \item High-quality typesetting
+    \item Customizability
+    \item Cross-platform
+    \item Community and support
+    \item Integration w other tools
+    \item Overleaf
+  \end{itemize}
+  \onslide<+->
+  Handle:
+  \begin{itemize}
+    \item Report
+    \item Presentation
+    \item Many more
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Code your document}
+  \onslide<+->
+  Use macro to:
+  \onslide<+->
+  \begin{itemize}
+    \item Write your text
+    \item Structure your document
+    \item Create maths boxes
+    \item Include images and tables
+    \begin{itemize}
+      \item Size
+      \item Placement
+      \item Caption
+      \item Label and reference
+    \end{itemize}
+    \item Create figure and graphes
+    \item Bibliography
+    \item Create your own commands and environments
+  \end{itemize}
+  \onslide<+->
+  Know what you do \(\Rightarrow\) the document is as you want
+\end{frame}
+
+\begin{frame}[t]{Overleaf}
+  \onslide<+->
+  Overleaf is a online editor:
+  \onslide<+->
+  \begin{itemize}
+    \item[+] No installation
+    \item[+] Collaboration \note{only 1 free collaborator}
+    \item[+] Great UI
+    \item[+] Lot of docs and templates
+    \item[-] Limited free features
+    \item[-] Internet connection
+    \item[-] Dependency on a third party
+  \end{itemize}
+  \note{Setting up Overleaf account, creating a new project, and the different templates available.}
+\end{frame}
+
+\begin{frame}[c]{Huge corporation crashes, right?}
+  \color{blue} %change the color of the text to blue in its scope, the {...} around the text limit the scope of the color change.
+    May the 14th 2025, Overleaf servers were down for more than 6 hours, a lot of users were really frustrated, some panicked because of their deadlines, and in all this chaos, a lot of user were the happy ones, because they had the habit to have a local backup of their projects. To add to this, this was the day before the dealine for the NeurIPS 2025 and some Master thesis.
+\end{frame}
+
+\begin{frame}[t]{Locally works}
+  \onslide<+->
+  TexLive is a local distribution of LaTeX:
+  \onslide<+->
+  \begin{itemize}
+    \item[+] No internet connection needed
+    \item[+] Full control over your environment
+    \item[+] No dependency on a third party
+    \item[-] Installation and setup can be complex
+    \item[-] Collaboration can be more difficult
+  \end{itemize}
+  \onslide<+->
+  Still need an IDE:
+  \begin{itemize}
+    \item TeXworks
+    \item TeXstudio
+    \item VSCode with LaTeX Workshop extension \note{Recommand this, see later why}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Overleaf offline}
+  \onslide<+->
+  Easy: Use Git integretion of Overleaf\\
+  \onslide<+->
+  \(\rightarrow\) But Git is a prenium feature of Overleaf \note{and Dropbox and Github...}\\
+  \onslide<+->
+  Complex setup that works:
+  \begin{itemize}
+    \item Vs code
+    \item LaTeX Workshop extension
+    \item Overleaf Workshop extension
+    \item Overleaf cookies
+    \item Local Git
+  \end{itemize}
+  \note{
+    \begin{itemize}
+      \item Install VSCode
+      \item Install LaTeX Workshop extension
+      \item Install Overleaf Workshop extension
+      \item Get the Network -> /project -> Request Headers -> Cookies overleaf_session2=...
+      \item Use it to log in to Overleaf Workshop extension
+    \end{itemize}
+    IDE link to Overleaf in real time, but still only online
+    \begin{itemize}
+      \item Create local directory
+    \end{itemize}
+    Still link in real time to online, and online version override local version if different after a reconnection
+    \begin{enumerate}
+      \item Initialize Git in the local directory
+      \item Create a new branch to work offline only
+      \item switch to main branch before going online
+      \item get the latest version online (automatically done)
+      \item merge offline branch with main branch
+    \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}[t]{Writting}
+  \onslide<+->
+  2 types of "text" boxes:
+  \begin{itemize}
+    \item Text box: for textual content (no delimiter)
+    \item Math box: for mathematical content (delimiter: \(\backslash(...\backslash)\) or \(\$...\$\) for inline, \(\backslash[...\backslash]\) or \(\$\$...\$\$\) for display)
+  \end{itemize}
+  \onslide<+->
+  2 types of macros:
+  \begin{itemize}
+    \item Command: inline content, e.g. \texttt{\(\backslash\)LaTeX}
+    \item Environment: block of content with a begin and an end, e.g. \texttt{\(\backslash\)begin\{itemize\}...\(\backslash\)end\{itemize\}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Preamble}
+  \onslide<+->
+  Before \texttt{\(\backslash\)begin\{document\}}:
+  \begin{itemize}
+    \item Document class and options, \texttt{\(\backslash\)documentclass\{...\}}
+    \item Packages and their options, \texttt{\(\backslash\)usepackage\{...\}}
+    \item Custom commands and environments
+    \item Document metadata, \texttt{\(\backslash\)title\{...\}}, \texttt{\(\backslash\)author\{...\}}, \texttt{\(\backslash\)date\{...\}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Document management}
+  \onslide<+->
+  Use the sectioning commands to structure your document:
+  \begin{itemize}
+    \item \texttt{\(\backslash\)part\{...\}} for parts
+    \item \texttt{\(\backslash\)chapter\{...\}} for chapters (only in book and report document classes)
+    \item \texttt{\(\backslash\)section\{...\}} for sections
+    \item \texttt{\(\backslash\)subsection\{...\}} for subsections
+    \item \texttt{\(\backslash\)subsubsection\{...\}} for subsubsections
+    \item \texttt{\(\backslash\)paragraph\{...\}} for paragraphs
+    \item \texttt{\(\backslash\)subparagraph\{...\}} for subparagraphs
+  \end{itemize}
+  \onslide<+->
+  Create a TOC with the \texttt{\(\backslash\)tableofcontents}, \texttt{\(\backslash\)listoffigures} and \texttt{\(\backslash\)listoftables} commands (depth: \texttt{\(\backslash\)setcounter\{tocdepth\}\{...\}})
+\end{frame}
+
+\begin{frame}[t]{Document management (cont.)}
+  \onslide<+->
+  Reference:
+  \begin{itemize}
+    \item \texttt{\(\backslash\)label\{...\}} command to label sections, figures, tables, equations, etc.
+    \item \texttt{\(\backslash\)ref\{...\}} command to reference the labeled items in the text
+    \item \texttt{\(\backslash\)pageref\{...\}} command to reference the page number of the labeled item
+  \end{itemize}
+  \onslide<+->
+  Multiple files management:
+  \begin{itemize}
+    \item Use the \texttt{\(\backslash\)include\{...\}} command to include other .tex files in the main document
+    \item Use the \texttt{\(\backslash\)input\{...\}} command to include other .tex files without starting a new page
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Text box}\note{Only present some of the most basic macros, ask me if you want me to present some specific macros.}
+  \onslide<+->
+  Just write your text, and use command to format it:
+  \begin{itemize}
+    \item \textbf{Bold} with \texttt{\(\backslash\)textbf\{...\}}
+    \item \textit{Italic} with \texttt{\(\backslash\)textit\{...\}}
+    \item \underline{Underline} with \texttt{\(\backslash\)underline\{...\}}
+    \item {\color{red} Colored} with \texttt{\(\backslash\)color\{red\}...}
+  \end{itemize}
+  \onslide<+->
+  You can also use some environments:
+  \begin{itemize}
+    \item Itemize for unordered list
+    \item Enumerate for ordered list
+    \item Description for description list
+    \item And many more...
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Math box}
+  \onslide<+->
+  Special characters and symbols:
+  \begin{itemize}
+    \item Greek letters: \texttt{\(\backslash\)alpha}, \texttt{\(\backslash\)beta}, ...
+    \item Operators: \texttt{\(\backslash\)sum}, \texttt{\(\backslash\)int}, \texttt{\(\backslash\)frac\{...\}\{...\}}, ...
+    \item Relations: \texttt{\(\backslash\)leq}, \texttt{\(\backslash\)geq}, ...
+    \item And many more...
+  \end{itemize}
+  \onslide<+->
+  Some maths environments:
+  \begin{itemize}
+    \item Equation for numbered equations
+    \item Align for aligned equations
+    \item And many more...
+  \end{itemize}
+  For numbered maths environments, you can add a * to the end of the environment name to remove the numbering
+\end{frame}
+
+\begin{frame}[t]{Figures and tables}
+  \onslide<+->
+  Use the figure environment to include images:
+  \begin{itemize}
+    \item \texttt{\(\backslash\)includegraphics\{...\}} to include the image
+    \item \texttt{\(\backslash\)caption\{...\}} to add a caption
+    \item \texttt{\(\backslash\)label\{...\}} to add a label for referencing
+  \end{itemize}
+  \onslide<+->
+  Use the table environment to create tables:
+  \begin{itemize}
+    \item Use the tabular environment to define the structure of the table
+    \item Use \(\&\) to separate columns and \(\backslash\backslash\) to separate rows
+    \item Use \texttt{\(\backslash\)hline} to add horizontal lines
+    \item Use \texttt{\(\backslash\)caption\{...\}} and \texttt{\(\backslash\)label\{...\}} for caption and referencing
+  \end{itemize}
+  array act as a math version of tabular
+\end{frame}
+
+\begin{frame}[t]{Bibliography}
+  \onslide<+->
+  Bibliography environment to create a bibliography:
+  \begin{itemize}
+    \item Use the \texttt{\(\backslash\)bibitem\{...\}} command to add a reference
+    \item Use the \texttt{\(\backslash\)cite\{...\}} command to cite a reference in the text
+  \end{itemize}
+  \onslide<+->
+  BibTeX or BibLaTeX for advanced management
+\end{frame}
+
+\begin{frame}[t]{Create figure and graphes}
+  \onslide<+->
+  TikZ package to create figures and graphes directly in LaTeX:
+  \begin{itemize}
+    \item \texttt{tikzpicture} environment to create a drawing area
+    \item Use various TikZ commands to draw shapes, lines, and add text
+    \item TikZ allows for complex and customizable figures, including flowcharts, diagrams, and more
+  \end{itemize}
+  \onslide<+->
+  One of most complete packages, look the doc or search online
+\end{frame}
+
+\begin{frame}[t]{Create your own commands and environments}
+  \onslide<+->
+  \texttt{\(\backslash\)newcommand\{...\}\{...\}} command:
+  \begin{itemize}
+    \item Define a new command name and its definition
+    \item Can take arguments for more flexibility
+  \end{itemize}
+  \onslide<+->
+  \texttt{\(\backslash\)newenvironment\{...\}\{...\}\{...\}} command:
+  \begin{itemize}
+    \item Define a new environment name, its begin code, and its end code
+    \item Can also take arguments for more flexibility
+  \end{itemize}
+  \onslide<+->
+  For argument, use [X] for optional argument (in order) and \(\#\)X+n for mandatory argument (X+n is the number of the argument)
+\end{frame}
+
+\begin{frame}[t]{Issue with macros definition}
+  \onslide<+->
+  \begin{itemize}
+    \item Hard to follow argument if many
+    \item Hard to read the definition of the command or environment
+    \item Hard to input because of the syntax
+  \end{itemize}
+  \onslide<+->
+  \texttt{xparse} package to create more user-friendly commands and environments:
+  \begin{itemize}
+    \item \texttt{\(\backslash\)NewDocumentCommand\{name\}\{arguments\}\{definition\}}
+    \item \texttt{\(\backslash\)NewDocumentEnvironment\{name\}\{arguments\}\{begin code\}\{end code\}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Conclusion}
+  \onslide<+->
+  LaTeX:
+  \begin{itemize}
+    \item Powerful typesetting system
+    \item Widely used in academia and industry
+    \item Steep learning curve but worth it for high-quality documents
+    \item Many online resources and communities for support
+  \end{itemize}
+  \onslide<+->
+  Overleaf:
+  \begin{itemize}
+    \item Convenient online LaTeX editor
+    \item Great for collaboration and ease of use
+    \item Limited free features and dependency on internet connection
+  \end{itemize}
+  \onslide<+->
+  Always have a local backup of your projects, especially if they are sensitive or have tight deadlines
+\end{frame}
+
+\begin{frame}{Practise time!}
+  \onslide<+->
+  Create a new project on Overleaf and try to write a simple document using commands and macros (try some online search). You can also try to create a local LaTeX environment and link it to Overleaf using the method presented in this course. If any questions don't hesitate to ask me!
+\end{frame}
+
+\end{document}

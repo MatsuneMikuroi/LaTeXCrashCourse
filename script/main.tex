@@ -1,0 +1,46 @@
+% first of all, precise the document class: report, article, book, beamer, standalone, ...
+% this has no effect on the vast majortiy, however, certain options or pagination are only available for certain types
+\documentclass{article}
+
+
+\usepackage[margin=1in]{geometry} % this will set the margins of the document to 1 inch on all sides. You can change this value to increase or decrease the margins.
+\usepackage{graphicx} % allows to include images in the document using the command \includegraphics
+\usepackage{hyperref} % enables clickable links and cross-references (\href, \url, \hyperref)
+\usepackage{amsmath} % load the package amsmath to have access to advanced math functionalities
+\usepackage{color} % color package allows to use colors in the document, for example for text or background. You can define your own colors using \definecolor, or use predefined colors such as red, blue, green, etc.
+
+\newcommand{\Overleaf}{(PLACEHOLDER)}
+
+% document metadata
+% set the title of the document
+\title{\LaTeX Introduction Course}
+% set the author of the document
+\author{Romain De Groote}
+% set the date of the document (today allows to automatically insert the current date)
+\date{\today}
+
+\setcounter{tocdepth}{2} % this will allow to include subsections in the table of contents, but not subsubsections. You can change this value to include more or less levels of sections in the table of contents.
+
+% This is where the content of the document starts
+\begin{document}
+
+
+\maketitle % generate the title using the metadata defined above
+
+\newpage % this will start a new page, so that the title and the table of contents are on separate pages.
+
+\tableofcontents % this will generate a table of contents based on the sections and subsections defined in the document
+
+\include{section/1.Introduction} % this will include the content of the file 1.Introduction.tex at this place, as if it was copy-pasted here. This allows to split the content of the document into several files, which is very useful for large documents. The path is relative to the main file, and the extension .tex is optional.
+
+\include{section/2.Use}
+
+\include{section/3.Writting}
+
+\section*{Conclusion} % the * in \section* means that this section will not be numbered, and will not appear in the table of contents. You can use this for sections that are not part of the main structure of the document, such as an introduction or a conclusion.
+
+In conclusion, LaTeX is a powerful and flexible typesetting system that allows you to create professional-looking documents with precise control over formatting and structure. Whether you are writing a simple report or a complex book, LaTeX provides the tools and features necessary to produce high-quality output. With its extensive package ecosystem and active community, LaTeX continues to be a popular choice for academics, researchers, and professionals across various fields. By mastering LaTeX, you can enhance your document creation skills and produce polished, well-structured documents with ease. Overleaf, the main LaTeX editor, provides a user-friendly interface and collaborative features that make it easier than ever to create and share LaTeX documents. Whether you are new to LaTeX or an experienced user, Overleaf offers a convenient platform to write, edit, and compile your LaTeX projects efficiently. However, the free plan can be limiting, and relying only on online editors can be risky, so try to always have a local backup of your work with a local installation to work with in case.\newline
+If I can ask give a final advise, as always, practice is key to mastering LaTeX. The more you use it, the more comfortable you will become with its syntax and features.
+
+\end{document}
+% this is where the content of the document ends

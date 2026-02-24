@@ -1,0 +1,57 @@
+\section{Use}
+\subsection{Online - Overleaf}
+
+\subsubsection{Account Creation}
+
+To use Overleaf, you need to create an account. You can sign up for a \href{https://www.overleaf.com/register}{free account} using your email address or by linking your Google account\footnote{Use your personnal email address to create the account, you can add school/professional email address later to benefit from additional features if you are elligible.}. Once you have created an account, you can start creating and editing LaTeX documents.
+
+\subsection{New Project}
+
+To create a new project in Overleaf, simply click on the "New Project" button on the dashboard.
+
+You will then be prompted to choose a template for your project. In addition to the basic templates, you can also find a wide range of templates for different types of documents, such as academic papers, presentations, posters, and more. You can also start with a blank project if you prefer to write your LaTeX code from scratch.
+
+As said in the introduction, Overleaf is a freenium tool, however it has successfully implemented itself despite it, how? This can be explain by different factors:
+\begin{itemize} 
+  \item \textbf{Ease of use:} Overleaf UI is very user-friendly and intuitive, in addition coloborate with it is really easy.
+  \item \textbf{Agreement with institutions:} A lot of universities and research institutions have agreements with Overleaf, offering to their students and researchers free access to the premium features of Overleaf.
+  \item \textbf{Vast range of templates:} The community of Overleaf is very active, and a lot of templates are available for free, which can be a great incentive for users to use Overleaf.
+  \item \textbf{Documentation:} Overleaf provides a vast range of documentation and tutorials to do everything you want with LaTeX, which can be a great incentive for users to use Overleaf.
+\end{itemize}
+
+\subsubsection{Counterpart...}
+
+There is 2 main counterparts I could find:
+\begin{itemize}
+  \item \textbf{Dependence on the prenium features:} Some prenium features of Overleaf are most than useful, and downgrading from a prenium account to a free account can be really frustrating, especially if you have the habit to use these features.
+  \item \textbf{Dependence on the servers of Overleaf:} To be clear, Overleaf is a really good tool, and its servers are really reliable, but you are still dependent on them.\newline
+  {\color{blue} %change the color of the text to blue in its scope, the {...} around the text limit the scope of the color change.
+    May the 14th 2025, Overleaf servers were down for more than 6 hours, a lot of users were really frustrated, some panicked because of their deadlines, and in all this chaos, a lot of user were the happy ones, because they had the habit to have a local backup of their projects. To add to this, this was the day before the dealine for the NeurIPS 2025 and some Master thesis.
+  }\newline
+  The moral of this is: always have numerous backups of your sensitive projects.
+\end{itemize}
+
+The big issue, is that Git, Github and Dropbox are prenium features of Overleaf.
+
+\subsection{Offline - TeXLive}
+
+If you want to use LaTeX offline, you can download a local distribution of LaTeX such as TeX Live. This will allow you to compile LaTeX documents on your own computer without needing an internet connection.
+
+It is then possible to use a local LaTeX editor such as TeXworks, TeXstudio, or VSCode with the LaTeX Workshop extension. These editors provide a user-friendly interface for writing and editing LaTeX code, as well as features such as syntax highlighting, code completion, and error checking.
+
+
+\subsection{Offline Overleaf free}
+
+To have access to an offline version of an Overleaf project, you can follow these steps:
+\begin{itemize}
+  \item Install Vs Code
+  \item Install the Overleaf Workshop extension
+  \item Install LaTeX Workshop extension
+  \item Remote access to the Overleaf project using the Overleaf Workshop extension, which will allow you to edit your Overleaf project in VSCode
+  \item Create a local version of the project (be aware, this is still real time editing and losing the connection and then reconnecting will cause the local version to be updated with the online version, which can cause loss of work if you have made changes in the local version while being disconnected)
+  \item Init Git
+  \item Create a new branch for the local version
+  \item cut your internet connection, and work on the local version
+  \item Checkout to main branch, and reconnect to the internet, which will update the local version with the online version
+  \item Merge the local branch with the main branch, which will allow you to keep your changes and update the online version with them
+\end{itemize}

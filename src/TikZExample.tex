@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (2.5,0) node[right] {$x$};
+  \draw[->] (0,0) -- (0,2) node[above] {$y$};
+  \draw[blue, thick, domain=0:2.4]
+    plot (\x, {0.3*\x*\x});
+  \draw[dashed] (2,0) -- (2,1.2);
+  \fill[red] (2,1.2) circle (2pt)
+    node[above left] {$A$};
+\end{tikzpicture}

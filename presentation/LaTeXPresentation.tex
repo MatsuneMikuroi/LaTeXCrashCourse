@@ -2,6 +2,7 @@
 
 \usepackage{listing}  % used for code listing
 \usepackage{tikz}  % used to draw
+\usepackage{verbatim}  % \verbatiminput to display the code of a file
 \usepackage{hyperref}  % used to format hyperlink reference 
 \hypersetup{
     colorlinks=true,
@@ -42,10 +43,28 @@
 
 \titlepage  % Generate the title slide
 
+\begin{frame}[t]{How this session works}
+  \onslide<+->
+  Today:
+  \begin{itemize}
+    \item No installation
+    \item Web browser + Overleaf account
+  \end{itemize}
+  \onslide<+->
+  Git repository:\\
+  \href{https://github.com/MatsuneMikuroi/LaTeXCrashCourse}{github.com/MatsuneMikuroi/LaTeXCrashCourse}
+  \begin{itemize}
+    \item This presentation (beamer)
+    \item Script (article, multiple files)
+    \item Compiled PDFs
+  \end{itemize}
+  \onslide<+->
+  Code + PDF \(\Rightarrow\) complete example
+  \note{All the sources of the course are on the repo: read the code next to the PDF to see how everything is done.}
+\end{frame}
+
 \begin{frame}[t]{Why LaTeX?}  % New frame, text top aligned, slide title: Why LaTeX?
   \onslide<+->  % show from this to the next on this slide
-  As someone evolving in science, why use LaTeX:
-  \onslide<+->
   \begin{itemize}
     \item Open-Source and free
     \item High-quality typesetting
@@ -62,34 +81,36 @@
     \item Presentation
     \item Many more
   \end{itemize}
+  \note{As someone evolving in science, why use LaTeX?}
 \end{frame}
 
 \begin{frame}[t]{Code your document}
   \onslide<+->
-  Use macro to:
+  Macros for:
   \onslide<+->
   \begin{itemize}
-    \item Write your text
-    \item Structure your document
-    \item Create maths boxes
-    \item Include images and tables
+    \item Text
+    \item Structure
+    \item Maths
+    \item Images and tables
     \begin{itemize}
       \item Size
       \item Placement
       \item Caption
       \item Label and reference
     \end{itemize}
-    \item Create figure and graphes
+    \item Figures and graphs
     \item Bibliography
-    \item Create your own commands and environments
+    \item Own commands and environments
   \end{itemize}
   \onslide<+->
-  Know what you do \(\Rightarrow\) the document is as you want
+  Full control \(\Rightarrow\) document as you want
+  \note{Know what you do, and the document is exactly as you want.}
 \end{frame}
 
 \begin{frame}[t]{Overleaf}
   \onslide<+->
-  Overleaf is a online editor:
+  Online editor:
   \onslide<+->
   \begin{itemize}
     \item[+] No installation
@@ -103,148 +124,269 @@
   \note{Setting up Overleaf account, creating a new project, and the different templates available.}
 \end{frame}
 
-\begin{frame}[c]{Huge corporation crashes, right?}
-  \color{blue} %change the color of the text to blue in its scope, the {...} around the text limit the scope of the color change.
-    May the 14th 2025, Overleaf servers were down for more than 6 hours, a lot of users were really frustrated, some panicked because of their deadlines, and in all this chaos, a lot of user were the happy ones, because they had the habit to have a local backup of their projects. To add to this, this was the day before the dealine for the NeurIPS 2025 and some Master thesis.
+% ------------------------------------------------------------------------------
+% Local part: commented for now (the 10 GB download of the local installation took all the time last year)
+% uncomment the three frames below to present it again
+% ------------------------------------------------------------------------------
+
+% \begin{frame}[c]{Huge corporation crashes, right?}
+%   \color{blue} %change the color of the text to blue in its scope, the {...} around the text limit the scope of the color change.
+%   \begin{itemize}
+%     \item 14 May 2025: Overleaf down, 6+ hours
+%     \item Day before the NeurIPS 2025 deadline, Master theses
+%     \item Happy users: local backup
+%   \end{itemize}
+%   \note{May the 14th 2025, Overleaf servers were down for more than 6 hours, a lot of users were really frustrated, some panicked because of their deadlines, and in all this chaos, a lot of user were the happy ones, because they had the habit to have a local backup of their projects. To add to this, this was the day before the dealine for the NeurIPS 2025 and some Master thesis.}
+% \end{frame}
+
+% \begin{frame}[t]{Locally works}
+%   \onslide<+->
+%   TexLive is a local distribution of LaTeX:
+%   \onslide<+->
+%   \begin{itemize}
+%     \item[+] No internet connection needed
+%     \item[+] Full control over your environment
+%     \item[+] No dependency on a third party
+%     \item[-] Installation and setup can be complex
+%     \item[-] Collaboration can be more difficult
+%   \end{itemize}
+%   \onslide<+->
+%   Still need an IDE:
+%   \begin{itemize}
+%     \item TeXworks
+%     \item TeXstudio
+%     \item VSCode with LaTeX Workshop extension \note{Recommand this, see later why}
+%   \end{itemize}
+% \end{frame}
+
+% \begin{frame}[t]{Overleaf offline}
+%   \onslide<+->
+%   Easy: Use Git integretion of Overleaf\\
+%   \onslide<+->
+%   \(\rightarrow\) But Git is a prenium feature of Overleaf \note{and Dropbox and Github...}\\
+%   \onslide<+->
+%   Complex setup that works:
+%   \begin{itemize}
+%     \item Vs code
+%     \item LaTeX Workshop extension
+%     \item Overleaf Workshop extension
+%     \item Overleaf cookies
+%     \item Local Git
+%   \end{itemize}
+%   \note{
+%     \begin{itemize}
+%       \item Install VSCode
+%       \item Install LaTeX Workshop extension
+%       \item Install Overleaf Workshop extension
+%       \item Get the Network -> /project -> Request Headers -> Cookies overleaf_session2=...
+%       \item Use it to log in to Overleaf Workshop extension
+%     \end{itemize}
+%     IDE link to Overleaf in real time, but still only online
+%     \begin{itemize}
+%       \item Create local directory
+%     \end{itemize}
+%     Still link in real time to online, and online version override local version if different after a reconnection
+%     \begin{enumerate}
+%       \item Initialize Git in the local directory
+%       \item Create a new branch to work offline only
+%       \item switch to main branch before going online
+%       \item get the latest version online (automatically done)
+%       \item merge offline branch with main branch
+%     \end{enumerate}
+%   }
+% \end{frame}
+
+\begin{frame}[t]{Create your account}
+  \onslide<+->
+  \href{https://www.overleaf.com/register}{overleaf.com/register}:
+  \begin{itemize}
+    \item Personal email (or Google account)
+    \item Email confirmation
+  \end{itemize}
+  \onslide<+->
+  Dashboard:
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{./../src/NewProject.png}
+  \end{center}
+  \begin{itemize}
+    \item Blank project: from scratch
+    \item Example project: main features
+    \item Upload project: .zip
+    \item Templates: thesis, report, CV, poster...
+  \end{itemize}
+  \note{Personal email: they keep their projects when they leave the school. Show the templates gallery quickly, then create a blank project live with them.}
 \end{frame}
 
-\begin{frame}[t]{Locally works}
+\begin{frame}[t]{The editor}
   \onslide<+->
-  TexLive is a local distribution of LaTeX:
-  \onslide<+->
+  3 panels:
   \begin{itemize}
-    \item[+] No internet connection needed
-    \item[+] Full control over your environment
-    \item[+] No dependency on a third party
-    \item[-] Installation and setup can be complex
-    \item[-] Collaboration can be more difficult
+    \item File tree: new file, folder, upload
+    \item Code editor: Code / Visual
+    \item PDF preview
   \end{itemize}
   \onslide<+->
-  Still need an IDE:
+  Useful:
   \begin{itemize}
-    \item TeXworks
-    \item TeXstudio
-    \item VSCode with LaTeX Workshop extension \note{Recommand this, see later why}
+    \item Recompile: Ctrl+S / Ctrl+Enter
+    \item Logs: errors, warnings
+    \item Double-click PDF \(\rightarrow\) code
+    \item Share, History
+    \item Menu: compiler, main document, download
   \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Overleaf offline}
-  \onslide<+->
-  Easy: Use Git integretion of Overleaf\\
-  \onslide<+->
-  \(\rightarrow\) But Git is a prenium feature of Overleaf \note{and Dropbox and Github...}\\
-  \onslide<+->
-  Complex setup that works:
-  \begin{itemize}
-    \item Vs code
-    \item LaTeX Workshop extension
-    \item Overleaf Workshop extension
-    \item Overleaf cookies
-    \item Local Git
-  \end{itemize}
-  \note{
-    \begin{itemize}
-      \item Install VSCode
-      \item Install LaTeX Workshop extension
-      \item Install Overleaf Workshop extension
-      \item Get the Network -> /project -> Request Headers -> Cookies overleaf_session2=...
-      \item Use it to log in to Overleaf Workshop extension
-    \end{itemize}
-    IDE link to Overleaf in real time, but still only online
-    \begin{itemize}
-      \item Create local directory
-    \end{itemize}
-    Still link in real time to online, and online version override local version if different after a reconnection
-    \begin{enumerate}
-      \item Initialize Git in the local directory
-      \item Create a new branch to work offline only
-      \item switch to main branch before going online
-      \item get the latest version online (automatically done)
-      \item merge offline branch with main branch
-    \end{enumerate}
-  }
+  \note{Overleaf changes its interface regularly: check the names and places of the buttons the week before the course.}
 \end{frame}
 
 \begin{frame}[t]{Writting}
   \onslide<+->
   2 types of "text" boxes:
   \begin{itemize}
-    \item Text box: for textual content (no delimiter)
-    \item Math box: for mathematical content (delimiter: \(\backslash(...\backslash)\) or \(\$...\$\) for inline, \(\backslash[...\backslash]\) or \(\$\$...\$\$\) for display)
+    \item Text box: no delimiter
+    \item Math box:
+    \begin{itemize}
+      \item Inline: \(\backslash(...\backslash)\) or \(\$...\$\)
+      \item Display: \(\backslash[...\backslash]\) or \(\$\$...\$\$\)
+    \end{itemize}
   \end{itemize}
   \onslide<+->
   2 types of macros:
   \begin{itemize}
-    \item Command: inline content, e.g. \texttt{\(\backslash\)LaTeX}
-    \item Environment: block of content with a begin and an end, e.g. \texttt{\(\backslash\)begin\{itemize\}...\(\backslash\)end\{itemize\}}
+    \item Command: \texttt{\(\backslash\)LaTeX}
+    \item Environment: \texttt{\(\backslash\)begin\{itemize\}...\(\backslash\)end\{itemize\}}
   \end{itemize}
+  \note{Command: inline content. Environment: block of content with a begin and an end.}
 \end{frame}
 
 \begin{frame}[t]{Preamble}
   \onslide<+->
   Before \texttt{\(\backslash\)begin\{document\}}:
   \begin{itemize}
-    \item Document class and options, \texttt{\(\backslash\)documentclass\{...\}}
-    \item Packages and their options, \texttt{\(\backslash\)usepackage\{...\}}
-    \item Custom commands and environments
-    \item Document metadata, \texttt{\(\backslash\)title\{...\}}, \texttt{\(\backslash\)author\{...\}}, \texttt{\(\backslash\)date\{...\}}
+    \item Class and options: \texttt{\(\backslash\)documentclass\{...\}}
+    \item Packages and options: \texttt{\(\backslash\)usepackage\{...\}}
+    \item Own commands and environments
+    \item Metadata: \texttt{\(\backslash\)title\{...\}}, \texttt{\(\backslash\)author\{...\}}, \texttt{\(\backslash\)date\{...\}}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]{Minimal document}  % fragile: needed to use verbatim in a frame
+  \onslide<+->
+\begin{verbatim}
+\documentclass{article}  % preamble
+\usepackage{graphicx}
+\title{My title}
+\author{My name}
+
+\begin{document}         % body
+\maketitle
+\section{Introduction}
+Hello world!
+\end{document}
+\end{verbatim}
+  \onslide<+->
+  After \texttt{\(\backslash\)end\{document\}}: ignored
+\end{frame}
+
+\begin{frame}[t]{Special characters}
+  \onslide<+->
+  \begin{center}
+    \small
+    \begin{tabular}{cll}
+      Character & Role & To print it \\
+      \hline
+      \% & comment & \texttt{\(\backslash\)\%} \\
+      \$ & math mode & \texttt{\(\backslash\)\$} \\
+      \& & table column & \texttt{\(\backslash\)\&} \\
+      \# & command argument & \texttt{\(\backslash\)\#} \\
+      \_ & subscript (math) & \texttt{\(\backslash\)\_} \\
+      \{ \} & group & \texttt{\(\backslash\)\{ \(\backslash\)\}} \\
+      \textasciitilde & non-breaking space & \texttt{\(\backslash\)textasciitilde} \\
+      \textbackslash & start of a command & \texttt{\(\backslash\)textbackslash} \\
+    \end{tabular}
+  \end{center}
+  \onslide<+->
+  Spaces:
+  \begin{itemize}
+    \item Many spaces = 1 space
+    \item Line break = 1 space
+    \item Empty line = new paragraph
+  \end{itemize}
+  \note{These characters are part of the syntax: typing them directly gives an error or a strange result.}
+\end{frame}
+
+\begin{frame}[t]{When it does not compile}
+  \onslide<+->
+  Logs \(\rightarrow\) \textbf{first} error first:
+  \begin{itemize}
+    \item Undefined control sequence: typo, missing package
+    \item Missing \$ inserted: math outside math mode
+    \item File ended while scanning use of...: missing \}
+    \item Environment ... undefined: missing package
+    \item File ... not found: file name, case sensitive
+  \end{itemize}
+  \onslide<+->
+  PDF despite errors \(\Rightarrow\) maybe wrong
+  \note{Fix the first error first, the others are often consequences. The line of the error is given as l.12 in the log. Overleaf compiles despite errors: the PDF may be wrong, never ignore an error. If Overleaf acts strangely: Recompile from scratch (arrow next to Recompile).}
 \end{frame}
 
 \begin{frame}[t]{Document management}
   \onslide<+->
-  Use the sectioning commands to structure your document:
+  Sectioning:
   \begin{itemize}
-    \item \texttt{\(\backslash\)part\{...\}} for parts
-    \item \texttt{\(\backslash\)chapter\{...\}} for chapters (only in book and report document classes)
-    \item \texttt{\(\backslash\)section\{...\}} for sections
-    \item \texttt{\(\backslash\)subsection\{...\}} for subsections
-    \item \texttt{\(\backslash\)subsubsection\{...\}} for subsubsections
-    \item \texttt{\(\backslash\)paragraph\{...\}} for paragraphs
-    \item \texttt{\(\backslash\)subparagraph\{...\}} for subparagraphs
+    \item \texttt{\(\backslash\)part\{...\}}
+    \item \texttt{\(\backslash\)chapter\{...\}} (book, report)
+    \item \texttt{\(\backslash\)section\{...\}}
+    \item \texttt{\(\backslash\)subsection\{...\}}
+    \item \texttt{\(\backslash\)subsubsection\{...\}}
+    \item \texttt{\(\backslash\)paragraph\{...\}}
+    \item \texttt{\(\backslash\)subparagraph\{...\}}
   \end{itemize}
   \onslide<+->
-  Create a TOC with the \texttt{\(\backslash\)tableofcontents}, \texttt{\(\backslash\)listoffigures} and \texttt{\(\backslash\)listoftables} commands (depth: \texttt{\(\backslash\)setcounter\{tocdepth\}\{...\}})
+  Tables of contents:
+  \begin{itemize}
+    \item \texttt{\(\backslash\)tableofcontents}, \texttt{\(\backslash\)listoffigures}, \texttt{\(\backslash\)listoftables}
+    \item Depth: \texttt{\(\backslash\)setcounter\{tocdepth\}\{...\}}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[t]{Document management (cont.)}
   \onslide<+->
   Reference:
   \begin{itemize}
-    \item \texttt{\(\backslash\)label\{...\}} command to label sections, figures, tables, equations, etc.
-    \item \texttt{\(\backslash\)ref\{...\}} command to reference the labeled items in the text
-    \item \texttt{\(\backslash\)pageref\{...\}} command to reference the page number of the labeled item
+    \item \texttt{\(\backslash\)label\{...\}}: sections, figures, tables, equations...
+    \item \texttt{\(\backslash\)ref\{...\}}: number
+    \item \texttt{\(\backslash\)pageref\{...\}}: page
   \end{itemize}
   \onslide<+->
-  Multiple files management:
+  Multiple files:
   \begin{itemize}
-    \item Use the \texttt{\(\backslash\)include\{...\}} command to include other .tex files in the main document
-    \item Use the \texttt{\(\backslash\)input\{...\}} command to include other .tex files without starting a new page
+    \item \texttt{\(\backslash\)include\{...\}}: new page
+    \item \texttt{\(\backslash\)input\{...\}}: no new page
   \end{itemize}
+  \note{Numbers and references are automatic: never written by hand, so never wrong.}
 \end{frame}
 
 \begin{frame}[t]{Text box}\note{Only present some of the most basic macros, ask me if you want me to present some specific macros.}
   \onslide<+->
-  Just write your text, and use command to format it:
+  Formatting:
   \begin{itemize}
-    \item \textbf{Bold} with \texttt{\(\backslash\)textbf\{...\}}
-    \item \textit{Italic} with \texttt{\(\backslash\)textit\{...\}}
-    \item \underline{Underline} with \texttt{\(\backslash\)underline\{...\}}
-    \item {\color{red} Colored} with \texttt{\(\backslash\)color\{red\}...}
+    \item \textbf{Bold}: \texttt{\(\backslash\)textbf\{...\}}
+    \item \textit{Italic}: \texttt{\(\backslash\)textit\{...\}}
+    \item \underline{Underline}: \texttt{\(\backslash\)underline\{...\}}
+    \item {\color{red} Colored}: \texttt{\(\backslash\)color\{red\}...}
   \end{itemize}
   \onslide<+->
-  You can also use some environments:
+  Environments:
   \begin{itemize}
-    \item Itemize for unordered list
-    \item Enumerate for ordered list
-    \item Description for description list
+    \item Itemize: unordered list
+    \item Enumerate: ordered list
+    \item Description: description list
     \item And many more...
   \end{itemize}
 \end{frame}
 
 \begin{frame}[t]{Math box}
   \onslide<+->
-  Special characters and symbols:
+  Symbols:
   \begin{itemize}
     \item Greek letters: \texttt{\(\backslash\)alpha}, \texttt{\(\backslash\)beta}, ...
     \item Operators: \texttt{\(\backslash\)sum}, \texttt{\(\backslash\)int}, \texttt{\(\backslash\)frac\{...\}\{...\}}, ...
@@ -252,86 +394,143 @@
     \item And many more...
   \end{itemize}
   \onslide<+->
-  Some maths environments:
+  Environments:
   \begin{itemize}
-    \item Equation for numbered equations
-    \item Align for aligned equations
+    \item Equation: numbered equation
+    \item Align: aligned equations
     \item And many more...
   \end{itemize}
-  For numbered maths environments, you can add a * to the end of the environment name to remove the numbering
+  \onslide<+->
+  \texttt{*}: no numbering (\texttt{equation*}, \texttt{align*})
+\end{frame}
+
+\begin{frame}[fragile,t]{Maths in practice}
+  \onslide<+->
+  \begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.3}  % more space between the rows, for the fractions
+    \begin{tabular}{ll}
+      Code & Result \\
+      \hline
+      \verb|x^2  x_i  x_{max}| & \(x^2 \quad x_i \quad x_{max}\) \\
+      \verb|\frac{a}{b}  \sqrt{x}| & \(\frac{a}{b} \quad \sqrt{x}\) \\
+      \verb|\sum_{i=1}^{N} T_i| & \(\sum_{i=1}^{N} T_i\) \\
+      \verb|\bar{T}  \Delta L  \pi| & \(\bar{T} \quad \Delta L \quad \pi\) \\
+    \end{tabular}
+  \end{center}
+  \onslide<+->
+  Braces: \verb|x^10| \(\rightarrow\) \(x^10\), \verb|x^{10}| \(\rightarrow\) \(x^{10}\)\\
+  \onslide<+->
+  Reference: \verb|\label{eq:...}| + \verb|\eqref{eq:...}| (amsmath)
 \end{frame}
 
 \begin{frame}[t]{Figures and tables}
   \onslide<+->
-  Use the figure environment to include images:
+  Figure environment:
   \begin{itemize}
-    \item \texttt{\(\backslash\)includegraphics\{...\}} to include the image
-    \item \texttt{\(\backslash\)caption\{...\}} to add a caption
-    \item \texttt{\(\backslash\)label\{...\}} to add a label for referencing
+    \item \texttt{\(\backslash\)includegraphics\{...\}}: image
+    \item \texttt{\(\backslash\)caption\{...\}}: caption
+    \item \texttt{\(\backslash\)label\{...\}}: reference
   \end{itemize}
   \onslide<+->
-  Use the table environment to create tables:
+  Table environment:
   \begin{itemize}
-    \item Use the tabular environment to define the structure of the table
-    \item Use \(\&\) to separate columns and \(\backslash\backslash\) to separate rows
-    \item Use \texttt{\(\backslash\)hline} to add horizontal lines
-    \item Use \texttt{\(\backslash\)caption\{...\}} and \texttt{\(\backslash\)label\{...\}} for caption and referencing
+    \item Tabular environment: structure
+    \item \(\&\): columns, \(\backslash\backslash\): rows
+    \item \texttt{\(\backslash\)hline}: horizontal line
+    \item \texttt{\(\backslash\)caption\{...\}}, \texttt{\(\backslash\)label\{...\}}
   \end{itemize}
-  array act as a math version of tabular
+  \onslide<+->
+  Array: math tabular
+  \note{Figures and tables are floats: LaTeX places them where they fit best, hence Figure\textasciitilde\textbackslash ref and never "the figure below". Label after caption.}
 \end{frame}
 
 \begin{frame}[t]{Bibliography}
   \onslide<+->
-  Bibliography environment to create a bibliography:
+  Thebibliography environment:
   \begin{itemize}
-    \item Use the \texttt{\(\backslash\)bibitem\{...\}} command to add a reference
-    \item Use the \texttt{\(\backslash\)cite\{...\}} command to cite a reference in the text
+    \item \texttt{\(\backslash\)bibitem\{...\}}: reference
+    \item \texttt{\(\backslash\)cite\{...\}}: citation
   \end{itemize}
   \onslide<+->
-  BibTeX or BibLaTeX for advanced management
+  Advanced: BibTeX, BibLaTeX
 \end{frame}
 
 \begin{frame}[t]{Create figure and graphes}
   \onslide<+->
-  TikZ package to create figures and graphes directly in LaTeX:
+  TikZ package:
   \begin{itemize}
-    \item \texttt{tikzpicture} environment to create a drawing area
-    \item Use various TikZ commands to draw shapes, lines, and add text
-    \item TikZ allows for complex and customizable figures, including flowcharts, diagrams, and more
+    \item \texttt{tikzpicture} environment: drawing area
+    \item Shapes, lines, text
+    \item Flowcharts, diagrams, plots...
   \end{itemize}
   \onslide<+->
-  One of most complete packages, look the doc or search online
+  Huge package \(\rightarrow\) doc, online search
+  \note{One of the most complete packages: look at the doc or search online.}
+\end{frame}
+
+\begin{frame}[t]{TikZ example}
+  \begin{columns}[T]
+    \begin{column}{0.66\textwidth}
+      \onslide<+->
+      \scriptsize
+      \verbatiminput{./../src/TikZExample.tex}  % display the code of the file
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \onslide<+->
+      \input{./../src/TikZExample.tex}  % compile the same file: the picture always matches the code
+    \end{column}
+  \end{columns}
+  \note{Same file used twice: shown as code with \textbackslash verbatiminput, compiled with \textbackslash input. The script uses it too.}
 \end{frame}
 
 \begin{frame}[t]{Create your own commands and environments}
   \onslide<+->
-  \texttt{\(\backslash\)newcommand\{...\}\{...\}} command:
+  \texttt{\(\backslash\)newcommand\{...\}\{...\}}:
   \begin{itemize}
-    \item Define a new command name and its definition
-    \item Can take arguments for more flexibility
+    \item Name + definition
+    \item Arguments
   \end{itemize}
   \onslide<+->
-  \texttt{\(\backslash\)newenvironment\{...\}\{...\}\{...\}} command:
+  \texttt{\(\backslash\)newenvironment\{...\}\{...\}\{...\}}:
   \begin{itemize}
-    \item Define a new environment name, its begin code, and its end code
-    \item Can also take arguments for more flexibility
+    \item Name + begin code + end code
+    \item Arguments
   \end{itemize}
   \onslide<+->
-  For argument, use [X] for optional argument (in order) and \(\#\)X+n for mandatory argument (X+n is the number of the argument)
+  Arguments:
+  \begin{itemize}
+    \item \texttt{[n]}: number of arguments
+    \item \texttt{[default]}: optional first argument
+    \item \texttt{\#1}, \texttt{\#2}...: in the definition
+  \end{itemize}
+  \note{Example: \textbackslash newcommand\{\textbackslash vect\}[1]\{\textbackslash mathbf\{\#1\}\}, then \textbackslash vect\{x\}.}
 \end{frame}
 
 \begin{frame}[t]{Issue with macros definition}
   \onslide<+->
   \begin{itemize}
-    \item Hard to follow argument if many
-    \item Hard to read the definition of the command or environment
-    \item Hard to input because of the syntax
+    \item Many arguments: hard to follow
+    \item Definition: hard to read
+    \item Syntax: hard to input
   \end{itemize}
   \onslide<+->
-  \texttt{xparse} package to create more user-friendly commands and environments:
+  \texttt{xparse} package:
   \begin{itemize}
     \item \texttt{\(\backslash\)NewDocumentCommand\{name\}\{arguments\}\{definition\}}
     \item \texttt{\(\backslash\)NewDocumentEnvironment\{name\}\{arguments\}\{begin code\}\{end code\}}
+  \end{itemize}
+  \note{xparse creates more user-friendly commands and environments. Since 2020 these commands are built into LaTeX, no package needed.}
+\end{frame}
+
+\begin{frame}[t]{Going further}
+  \onslide<+->
+  Resources:
+  \begin{itemize}
+    \item \href{https://www.overleaf.com/learn}{Overleaf Learn}: docs, tutorials
+    \item \href{https://tex.stackexchange.com}{TeX Stack Exchange}: Q\&A
+    \item \href{https://detexify.kirelabs.org}{Detexify}: drawn symbol \(\rightarrow\) command
+    \item \href{https://ctan.org}{CTAN}: packages, documentation
   \end{itemize}
 \end{frame}
 
@@ -339,25 +538,21 @@
   \onslide<+->
   LaTeX:
   \begin{itemize}
-    \item Powerful typesetting system
-    \item Widely used in academia and industry
-    \item Steep learning curve but worth it for high-quality documents
-    \item Many online resources and communities for support
+    \item Powerful typesetting
+    \item Academia and industry
+    \item Steep learning curve, high-quality documents
+    \item Online resources, communities
   \end{itemize}
   \onslide<+->
   Overleaf:
   \begin{itemize}
-    \item Convenient online LaTeX editor
-    \item Great for collaboration and ease of use
-    \item Limited free features and dependency on internet connection
+    \item Online editor
+    \item Collaboration, ease of use
+    \item Limited free features, internet dependency
   \end{itemize}
-  \onslide<+->
-  Always have a local backup of your projects, especially if they are sensitive or have tight deadlines
-\end{frame}
-
-\begin{frame}{Practise time!}
-  \onslide<+->
-  Create a new project on Overleaf and try to write a simple document using commands and macros (try some online search). You can also try to create a local LaTeX environment and link it to Overleaf using the method presented in this course. If any questions don't hesitate to ask me!
+  % local part, commented for now:
+  % \onslide<+->
+  % Always have a local backup of your projects, especially if they are sensitive or have tight deadlines
 \end{frame}
 
 \end{document}

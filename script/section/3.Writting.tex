@@ -99,6 +99,15 @@ You can create a cross-reference in LaTeX using the \texttt{\(\backslash\)label}
 
 The Tikz package is a powerful tool for creating high-quality graphics and diagrams in LaTeX. It allows you to create complex figures and graphs using a simple and intuitive syntax, and it provides a wide range of options for customizing the appearance of your graphics. With Tikz, you can create everything from simple shapes and lines to complex diagrams and plots, making it a versatile tool for creating visual content in your LaTeX documents.
 
+For example, the following code draws two axes, a parabola and a point on it, and gives the Figure~\ref{fig:tikz}. This code is written in the file \texttt{src/TikZExample.tex}, which is used twice: once displayed as code with \texttt{\(\backslash\)verbatiminput}, and once compiled with \texttt{\(\backslash\)input}, so the figure always matches the code.
+\verbatiminput{./../src/TikZExample.tex} % display the code of the file
+\begin{figure}[h]
+  \centering
+  \input{./../src/TikZExample.tex} % compile the same file
+  \caption{A simple TikZ drawing}
+  \label{fig:tikz}
+\end{figure}
+
 \subsection{Create your own commands and environments}
 
 You can create your own commands and environments in LaTeX using the \texttt{\(\backslash\)newcommand} and \texttt{\(\backslash\)newenvironment} commands. The \texttt{\(\backslash\)newcommand} command allows you to define a new command that can be used throughout your document, while the \texttt{\(\backslash\)newenvironment} command allows you to define a new environment that can be used to structure your document in a specific way. Creating your own commands and environments can help to simplify your document and make it easier to read and maintain, especially if you have complex formatting or repetitive content in your document. For example:

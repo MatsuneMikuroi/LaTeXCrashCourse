@@ -1,0 +1,18 @@
+\frametitle{Maths in practice}
+\onslide<+->
+  \begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.3}  % more space between the rows, for the fractions
+    \begin{tabular}{ll}
+      Code & Result \\
+      \hline
+      \verb|x^2  x_i  x_{max}| & \(x^2 \quad x_i \quad x_{max}\) \\
+      \verb|\frac{a}{b}  \sqrt{x}| & \(\frac{a}{b} \quad \sqrt{x}\) \\
+      \verb|\sum_{i=1}^{N} T_i| & \(\sum_{i=1}^{N} T_i\) \\
+      \verb|\bar{T}  \Delta L  \pi| & \(\bar{T} \quad \Delta L \quad \pi\) \\
+    \end{tabular}
+  \end{center}
+  \onslide<+->
+  Braces: \verb|x^10| \(\rightarrow\) \(x^10\), \verb|x^{10}| \(\rightarrow\) \(x^{10}\)\\
+  \onslide<+->
+  Reference: \verb|\label{eq:...}| + \verb|\eqref{eq:...}| (amsmath)

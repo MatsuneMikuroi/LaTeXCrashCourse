@@ -1,7 +1,7 @@
 PWD /mnt/data/Documents/GitRepo/CrashCourses/LaTeX/script
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT main.tex
+INPUT /home/matsune/Documents/GitRepo/CrashCourses/LaTeX/script/main.tex
 OUTPUT main.log
 INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
